@@ -1,0 +1,27 @@
+[[categories]]
+name = "CI/CD & Configuration Management"
+skills = ["Jenkins", "GitHub Actions", "Azure DevOps", "ArgoCD", "FluxCD", "Ansible", "Helm", "Kustomize"]
+
+[[categories]]
+name = "Containerization & Networking"
+skills = ["Kubernetes", "Nomad", "Consul", "Load Balancing", "Ingress Controllers", "Service Mesh"]
+
+[[categories]]
+name = "Cloud Expertise & Infrastructure Management"
+skills = ["AWS", "Azure", "GCP", "Terragrunt", "Crossplane", "Karpenter", "Zero-Downtime Deployment Strategies"]
+
+[[categories]]
+name = "Programming"
+skills = ["Golang", "Python", "Bash", "Nu", "Groovy", "JavaScript", "Prometheus Exporters", "Kubernetes Controllers"]
+
+[[categories]]
+name = "Database Management"
+skills = ["MongoDB", "PostgreSQL", "MySQL", "Redis", "InfluxDB"]
+
+[[categories]]
+name = "Observability"
+skills = ["Prometheus", "Loki", "Tempo", "OpenTelemetry", "Grafana", "Zabbix", "ELK"]
+
+[[categories]]
+name = "Languages"
+skills = ["English (Fluent - C2)", "German (Intermediate - B1)", "French (Intermediate - B1)", "Russian (Native)"]
