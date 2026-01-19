@@ -4,6 +4,7 @@ import indexHtml from "../public/index.html";
 import faviconSvg from "../public/favicon.svg";
 import linkedinSvg from "../public/linkedin.svg";
 import githubSvg from "../public/github.svg";
+import telegramSvg from "../public/telegram.svg";
 import stylesCss from "../public/styles.css";
 
 import headerToml from "../content/header.toml";
@@ -17,7 +18,16 @@ const staticFiles = {
   "/": { content: indexHtml, type: "text/html" },
   "/index.html": { content: indexHtml, type: "text/html" },
   "/favicon.svg": { content: faviconSvg, type: "image/svg+xml", cache: 86400 },
-  "/linkedin.svg": { content: linkedinSvg, type: "image/svg+xml", cache: 86400 },
+  "/linkedin.svg": {
+    content: linkedinSvg,
+    type: "image/svg+xml",
+    cache: 86400,
+  },
+  "/telegram.svg": {
+    content: telegramSvg,
+    type: "image/svg+xml",
+    cache: 86400,
+  },
   "/github.svg": { content: githubSvg, type: "image/svg+xml", cache: 86400 },
   "/styles.css": { content: stylesCss, type: "text/css", cache: 3600 },
 };
@@ -94,14 +104,24 @@ const renderers = {
       .join(""),
 
   links: (data) => {
-      const items = [];
-      if (data.email)
-        items.push(`<a href="mailto:${data.email}" class="header-link">${data.email}</a>`);
-      if (data.linkedin)
-        items.push(`<a href="${data.linkedin}" class="header-icon" target="_blank" title="LinkedIn"><img src="linkedin.svg" alt="LinkedIn" width="24" height="24"></a>`);
-      if (data.github)
-        items.push(`<a href="${data.github}" class="header-icon" target="_blank" title="GitHub"><img src="github.svg" alt="GitHub" width="24" height="24"></a>`);
-      return items.join("");
+    const items = [];
+    if (data.email)
+      items.push(
+        `<a href="mailto:${data.email}" class="header-link">${data.email}</a>`,
+      );
+    if (data.linkedin)
+      items.push(
+        `<a href="${data.linkedin}" class="header-icon" target="_blank" title="LinkedIn"><img src="linkedin.svg" alt="LinkedIn" width="24" height="24"></a>`,
+      );
+    if (data.github)
+      items.push(
+        `<a href="${data.github}" class="header-icon" target="_blank" title="GitHub"><img src="github.svg" alt="GitHub" width="24" height="24"></a>`,
+      );
+    if (data.telegram)
+      items.push(
+        `<a href="${data.telegram}" class="header-icon" target="_blank" title="Telegram"><img src="telegram.svg" alt="Telegram" width="24" height="24"></a>`,
+      );
+    return items.join("");
   },
 };
 
