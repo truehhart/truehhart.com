@@ -1,36 +1,11 @@
 import TOML from "@iarna/toml";
 
-import indexHtml from "../public/index.html";
-import faviconSvg from "../public/favicon.svg";
-import linkedinSvg from "../public/linkedin.svg";
-import githubSvg from "../public/github.svg";
-import telegramSvg from "../public/telegram.svg";
-import stylesCss from "../public/styles.css";
-
 import headerToml from "../content/header.toml";
 import aboutToml from "../content/about.toml";
 import experienceToml from "../content/experience.toml";
 import skillsToml from "../content/skills.toml";
 import educationToml from "../content/education.toml";
 import linksToml from "../content/links.toml";
-
-const staticFiles = {
-  "/": { content: indexHtml, type: "text/html" },
-  "/index.html": { content: indexHtml, type: "text/html" },
-  "/favicon.svg": { content: faviconSvg, type: "image/svg+xml", cache: 86400 },
-  "/linkedin.svg": {
-    content: linkedinSvg,
-    type: "image/svg+xml",
-    cache: 86400,
-  },
-  "/telegram.svg": {
-    content: telegramSvg,
-    type: "image/svg+xml",
-    cache: 86400,
-  },
-  "/github.svg": { content: githubSvg, type: "image/svg+xml", cache: 86400 },
-  "/styles.css": { content: stylesCss, type: "text/css", cache: 3600 },
-};
 
 const contentSources = {
   header: headerToml,
@@ -47,10 +22,6 @@ function formatText(text) {
     .replace(/\\textbf\{([^}]+)\}/g, '<span class="font-bold">$1</span>')
     .replace(/\\textit\{([^}]+)\}/g, '<span class="italic">$1</span>')
     .replace(/\\&/g, "&");
-}
-
-function stripProtocol(url) {
-  return url.replace(/https?:\/\//, "");
 }
 
 const renderers = {
@@ -111,15 +82,15 @@ const renderers = {
       );
     if (data.linkedin)
       items.push(
-        `<a href="${data.linkedin}" class="header-icon" target="_blank" title="LinkedIn"><img src="linkedin.svg" alt="LinkedIn" width="24" height="24"></a>`,
+        `<a href="${data.linkedin}" class="header-icon" target="_blank" title="LinkedIn"><img src="images/linkedin.svg" alt="LinkedIn" width="24" height="24"></a>`,
       );
     if (data.github)
       items.push(
-        `<a href="${data.github}" class="header-icon" target="_blank" title="GitHub"><img src="github.svg" alt="GitHub" width="24" height="24"></a>`,
+        `<a href="${data.github}" class="header-icon" target="_blank" title="GitHub"><img src="images/github.svg" alt="GitHub" width="24" height="24"></a>`,
       );
     if (data.telegram)
       items.push(
-        `<a href="${data.telegram}" class="header-icon" target="_blank" title="Telegram"><img src="telegram.svg" alt="Telegram" width="24" height="24"></a>`,
+        `<a href="${data.telegram}" class="header-icon" target="_blank" title="Telegram"><img src="images/telegram.svg" alt="Telegram" width="24" height="24"></a>`,
       );
     return items.join("");
   },
@@ -128,16 +99,6 @@ const renderers = {
 export default {
   async fetch(request) {
     const path = new URL(request.url).pathname;
-
-    if (staticFiles[path]) {
-      const { content, type, cache } = staticFiles[path];
-      return new Response(content, {
-        headers: {
-          "Content-Type": type,
-          ...(cache && { "Cache-Control": `public, max-age=${cache}` }),
-        },
-      });
-    }
 
     if (path.startsWith("/api/")) {
       const section = path.slice(5);
