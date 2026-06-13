@@ -1,0 +1,272 @@
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #111827;
+  border-bottom: 1px solid #d1d5db;
+  padding-bottom: 0.5rem;
+}
+
+.job-entry {
+  margin-bottom: 1.25rem;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.job-title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #111827;
+}
+
+.job-period,
+.education-year {
+  font-size: 1rem;
+  color: #4b5563;
+  white-space: nowrap;
+  margin-left: 1rem;
+}
+
+.job-company,
+.education-institution {
+  font-size: 1rem;
+  color: #374151;
+  margin-bottom: 0.5rem;
+}
+
+.job-description {
+  font-size: 1rem;
+  color: #374151;
+  font-style: italic;
+  border-left: 2px solid #d1d5db;
+  padding-left: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.job-achievements {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.job-achievements li {
+  font-size: 1rem;
+  color: #111827;
+  padding-left: 1.25rem;
+  position: relative;
+  margin-bottom: 0.25rem;
+}
+
+.job-achievements li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+}
+
+.skill-category {
+  margin-bottom: 1rem;
+}
+
+.skill-category-name {
+  font-weight: 500;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #111827;
+}
+
+.skill-tag {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  color: #111827;
+  margin: 0 0.5rem 0.5rem 0;
+}
+
+.education-entry {
+  margin-bottom: 1rem;
+}
+
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.education-degree {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #111827;
+}
+
+.header-link {
+  font-size: 0.875rem;
+  color: #374151;
+  text-decoration: none;
+}
+
+.header-link:hover {
+  color: #111827;
+}
+
+.header-icon {
+  color: #6b7280;
+}
+
+.header-icon:hover {
+  color: #111827;
+}
+
+.header-icon svg {
+  display: block;
+}
+
+.about-content {
+  font-size: 1rem;
+  color: #374151;
+}
+
+@media print {
+  @page {
+    margin: 0.4in;
+    size: A4;
+  }
+
+  body {
+    font-size: 8pt !important;
+    line-height: 1.25 !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .page-container {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+
+  header {
+    padding: 0 !important;
+    margin-bottom: 0.3rem !important;
+  }
+
+  h1 {
+    font-size: 14pt !important;
+    margin-bottom: 0.1rem !important;
+  }
+
+  header p {
+    font-size: 8pt !important;
+  }
+
+  .about-content {
+    font-size: 8pt !important;
+    margin-top: 0.2rem !important;
+  }
+
+  .section-title,
+  h2 {
+    font-size: 9pt !important;
+    margin-bottom: 0.25rem !important;
+    padding-bottom: 0.15rem !important;
+  }
+
+  .job-entry {
+    margin-bottom: 0.4rem !important;
+  }
+
+  .job-header {
+    margin-bottom: 0.15rem !important;
+  }
+
+  .job-title {
+    font-size: 8pt !important;
+  }
+
+  .job-period,
+  .job-company,
+  .job-description,
+  .job-achievements li,
+  .education-degree,
+  .education-year,
+  .education-institution,
+  .skill-category-name {
+    font-size: 8pt !important;
+  }
+
+  .job-company {
+    margin-bottom: 0.15rem !important;
+  }
+
+  .header-link {
+    font-size: 7pt !important;
+  }
+
+  .header-icon svg {
+    width: 10px !important;
+    height: 10px !important;
+  }
+
+  .job-description {
+    margin-bottom: 0.25rem !important;
+    padding-left: 0.4rem !important;
+  }
+
+  .job-achievements li {
+    margin-bottom: 0.05rem !important;
+    padding-left: 0.6rem !important;
+  }
+
+  .skill-category {
+    margin-bottom: 0.3rem !important;
+  }
+
+  .skill-tag {
+    padding: 0.1rem 0.3rem !important;
+    font-size: 7pt !important;
+    margin: 0 0.2rem 0.2rem 0 !important;
+  }
+
+  .education-entry {
+    margin-bottom: 0.3rem !important;
+  }
+
+  .education-header {
+    margin-bottom: 0.1rem !important;
+  }
+
+  .main-content {
+    gap: 0.6rem !important;
+    flex-direction: row !important;
+  }
+
+  aside {
+    width: 140px !important;
+  }
+
+  section {
+    margin-bottom: 0.5rem !important;
+  }
+
+  .space-y-8 > * + * {
+    margin-top: 0.4rem !important;
+  }
+
+  .animate-pulse {
+    display: none !important;
+  }
+
+  .job-entry,
+  .education-entry,
+  .skill-category {
+    page-break-inside: avoid;
+  }
+}

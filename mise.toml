@@ -1,0 +1,6 @@
+# Pinned to match Cloudflare Workers Builds' default image, so CI and local use
+# the same toolchain. Node lives in .tool-versions (read natively by both mise
+# and Cloudflare). Cloudflare can't pin pnpm from a file, but 10.11.1 is its
+# default there, so pinning it here keeps local in sync with no dashboard var.
+[tools]
+pnpm = "10.11.1"

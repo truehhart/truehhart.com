@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dmitrii Parshenkov</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg?v=2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /*STYLES*/
+    </style>
+  </head>
+  <body class="bg-white text-gray-900 text-base">
+    <div class="w-full page-container">
+      <header class="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 py-10 mb-4">
+        <div
+          class="flex flex-col sm:flex-row sm:justify-between sm:items-start"
+        >
+          <div>{{header}}</div>
+          <div class="flex items-center gap-4 mt-4 sm:mt-0">{{links}}</div>
+        </div>
+        <div class="mt-4">{{about}}</div>
+      </header>
+
+      <div class="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 page-container">
+        <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 main-content">
+          <main class="flex-1 lg:w-0 space-y-8">
+            <section>
+              <h2 class="section-title">Experience</h2>
+              <div>{{experience}}</div>
+            </section>
+          </main>
+
+          <aside class="lg:w-72 lg:flex-shrink-0 space-y-8">
+            <section>
+              <h2 class="section-title">Education</h2>
+              <div>{{education}}</div>
+            </section>
+
+            <section>
+              <h2 class="section-title">Skills</h2>
+              <div>{{skills}}</div>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

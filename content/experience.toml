@@ -1,0 +1,69 @@
+[[jobs]]
+title = "Staff Platform Engineer & CISO"
+company = "MOSTLY AI Solutions MP GmbH"
+period = "Mar. 2024 - Present"
+description = "Performed in a dual role managing both Platform Engineering and Information Security. Responsible for the daily operation and evolution of the Kubernetes platform to support AI/ML workloads. Maintained the existing ISMS policies and procedures, enforcing controls and resolving non-conformities to ensure ongoing compliance."
+achievements = [
+  "Completely revamped the existing \\textit{Kubernetes} platform, introducing a multi-environment \\textit{GitOps}-driven solution (\\textit{ArgoCD}, later \\textit{FluxCD}) with enhanced \\textit{RBAC} (\\textit{EKS} \\textit{SSO}, \\textit{IRSA}) and networking (\\textit{AWS LBC}, \\textit{Readiness Gates}) for efficiency and security.",
+  "Successfully consulted through an \\textit{ISO 27001:2022} review and prepared for the \\textit{SOC2} Audit.",
+  "Implemented sophisticated \\textit{Kubernetes} auto-scaling infrastructure on \\textit{EKS} via \\textit{Karpenter}, \\textit{Pod Preemption} and \\textit{Hot Pools} to support AI Agents/ML Jobs, dramatically improving resource utilization.",
+  "Ensured platform availability via a modern Operator-based monitoring stack: \\textit{Prometheus}/\\textit{Alertmanager} (via \\textit{Robusta}), \\textit{OpenTelemetry} (\\textit{Tempo}), and \\textit{Loki} (via \\textit{Alloy}), all managed via \\textit{IaC}.",
+  "Built a fully-automatic \\textit{GitOps}-based preview environments system, dramatically speeding up \\textit{SDLC} while significantly lowering infrastructure costs.",
+  "Reworked cloud infrastructure and networking by migrating to \\textit{IaC} via \\textit{Terragrunt} over \\textit{OpenTofu} (and \\textit{CrossPlane}), enhancing maintenance and observability.",
+  "Refactored \\textit{GitHub Actions} \\textit{CI/CD} with remote workflows and custom internal builders (via \\textit{ARC}), improving integration performance and security.",
+  "Introduced \\textit{Helm-charts} for internal/customer use with an in-house library and schema validation, redefining enterprise installation procedures.",
+  "Wrote internal \\textit{Python} services for environment management and custom \\textit{Prometheus} exporters for specialized monitoring."
+]
+
+[[jobs]]
+title = "Head of Platform & Automation"
+company = "CallCurrent Inc. (MightyCall)"
+period = "Dec. 2021 - Mar. 2024"
+description = "Designed and built the company's new infrastructure platform, migrating from the Hashicorp stack to Kubernetes. Managed a team of 3 engineers, a hybrid fleet of over 200 servers and owned the cloud budget. Responsible for the reliability of the production environment and the efficiency of the developer experience."
+achievements = [
+  "Established multi-environment \\textit{CI/CD} (via \\textit{GitOps} on \\textit{ArgoCD}) and access control, enabling a seamless transition from the legacy Orchestration Stack.",
+  "Introduced \\textit{SaltStack} to replace \\textit{Ansible} for autonomous dependency and update management across \\textit{Linux} and \\textit{Windows} machines, ensuring consistency.",
+  "Led the implementation of a modern observability stack: metrics via \\textit{Prometheus}, tracing via \\textit{OpenTelemetry}, and centralized logging via \\textit{Loki}, unified in \\textit{Grafana}.",
+  "Adopted \\textit{Skaffold} for local development, featuring pre-configured components to allow for rapid iteration and clean testing, drastically speeding up the \\textit{SDLC}.",
+  "Redesigned configuration systems for legacy components, introducing \\textit{DRY} principles with parametrization to improve maintainability."
+]
+
+
+[[jobs]]
+title = "Senior DevOps Engineer"
+company = "CallCurrent Inc. (MightyCall)"
+period = "Jul. 2021 - Dec. 2021"
+description = "Enhanced IaC implementation via Terraform and Ansible, allowing developers/QA teams to deploy, configure and manage their own environments."
+achievements = [
+  "Designed an in-house API Gateway and Load Balancing Solution based on \\textit{Envoy-proxy}, utilizing \\textit{Consul} KV and \\textit{Consul Template} for its dynamic configuration.",
+  "Performed a complete overhaul of the \\textit{CI/CD} \\textit{Jenkins} pipelines and transitioned to the \\textit{Declarative Pipeline} approach - introduced \\textit{Groovy} Libraries (Classes, Functions) for standardization and easier maintenance/quality control. This also sped up deployment/build times dramatically (1 hour to 8 minutes on average per component), whilst at the same time heavily improving compute usage."
+]
+
+[[jobs]]
+title = "Junior DevOps Engineer"
+company = "CallCurrent Inc. (MightyCall)"
+period = "Jul. 2020 - Jul. 2021"
+description = "Deployed, managed and supported the Hashicorp Orchestration Stack (Nomad, Consul, Vault). Created and maintained QA/Dev environments via IaC - introducing new/maintaining existing Terraform modules, Ansible Roles/Playbooks, Python/Bash/PowerShell scripts and Jenkins Pipelines for automation."
+achievements = [
+  "Introduced monitoring setup as part of the deployment process, configuring \\textit{Zabbix} integration (via \\textit{Zabbix Agent}) for base health metrics and simple alerts and \\textit{New Relic} for \\textit{APM} (Application Performance Monitoring)."
+]
+
+
+[[jobs]]
+title = "Head of Customer Support"
+company = "CallCurrent Inc. (MightyCall)"
+period = "Nov. 2019 - Dec. 2021"
+description = "Managed a team of 8 remote support agents and led the Anti-Fraud department. Improved internal and cross-departmental communication, positioning Support as a customer-centric insights provider for PM and Marketing while facilitating QA/Development's engagement with Tier 2 on existing bugs."
+achievements = [
+  "Introduced new onboarding and qualification improvement processes - erasing the gap between Tier 1 and Tier 2 teams, improving turnaround times and response quality.",
+  "Completely reworked the working schedule, reducing the missed support call ratio from 86% to 4% while maintaining the same working hours.",
+  "Maintained and improved support tooling (\\textit{Zendesk}, \\textit{LiveChat}, \\textit{Intercom}, etc.), introducing new automations, triggers, new ways to interact with customers and better ways to handle customer feedback, as well as perform analytics.",
+  "Conducted daily routine checks and educated an AI-driven self-learning anti-fraud platform. Collaborated with providing carriers and FBI to maintain a fraud-free service."
+]
+
+[[jobs]]
+title = "Technical Customer Support Representative"
+company = "CallCurrent Inc. (MightyCall)"
+period = "Nov. 2018 - Nov. 2019"
+description = "Assisted customers via chat, email and phone, resolving product (Tier 1) and technical (Tier 2) inquiries. Worked within the Anti-Fraud department, taking part in \\textit{KYC} checks and fraud prevention via customer and platform usage analysis."
+achievements = []
