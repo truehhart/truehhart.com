@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="{{description}}" />
+    <title>{{name_text}}</title>
+    <link rel="icon" type="image/png" href="/images/favicon.png?v=3" />
+    <style>
+      /*STYLES*/
+    </style>
+  </head>
+  <body class="{{view}}">
+    <div class="wrap">
+      <main class="mcard">
+        <div class="r-bar cvonly">
+          <div class="panel">
+            <div class="document-bar">
+              <a href="/" data-view="landing" aria-label="Return to profile"
+                >← Back to profile</a
+              >
+              <span>Curriculum Vitae</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row r-intro">
+          <div class="panel">
+            <header class="intro">
+              <div class="about">
+                <h1>{{name_html}}</h1>
+                <p class="tagline">{{tagline}}</p>
+              </div>
+              <aside class="index">
+                <img
+                  class="portrait"
+                  src="/images/portrait-pixelized.webp"
+                  alt="Pixel-art portrait of {{name_text}}"
+                />
+              </aside>
+            </header>
+          </div>
+        </div>
+
+        <div class="row r-lower landonly">
+          <div class="panel">
+            <section class="lower">
+              <div class="details">
+                <p class="eyebrow">Do you have any special talents?</p>
+                <div class="tags">
+                  <span>Kubernetes</span><span>GitOps</span><span>CloudOps</span
+                  ><span>DevEx</span><span>Security</span>
+                </div>
+              </div>
+              <nav aria-label="Profile links">
+                <a href="/resume" data-view="cv"
+                  ><small>Cool stuff I do at work</small
+                  ><strong
+                    >Curriculum vitae <span class="go">→</span></strong
+                  ></a
+                >
+                <a href="{{github}}" target="_blank" rel="noopener"
+                  ><small>Cool stuff I don't do at work</small
+                  ><strong
+                    >GitHub / projects <span class="go">↗</span></strong
+                  ></a
+                >
+                <a href="{{linkedin}}" target="_blank" rel="noopener"
+                  ><small>I'm technically on</small
+                  ><strong>LinkedIn <span class="go">↗</span></strong></a
+                >
+                <a href="mailto:{{email}}"
+                  ><small>I also reply to</small
+                  ><strong>Email <span class="go">↗</span></strong></a
+                >
+              </nav>
+            </section>
+            <footer>
+              <span
+                >Can someone tell me what goes in the footer? I don't have a
+                catchphrase :(</span
+              >
+            </footer>
+          </div>
+        </div>
+
+        <div class="row r-sum cvonly">
+          <div class="panel">
+            <section class="cv-section">
+              <h2 class="section-title">Summary</h2>
+              <div class="section-content">{{about}}</div>
+            </section>
+          </div>
+        </div>
+
+        <div class="row r-exp cvonly">
+          <div class="panel">
+            <section class="cv-section">
+              <h2 class="section-title">Experience</h2>
+              <div class="section-content">{{experience}}</div>
+            </section>
+          </div>
+        </div>
+
+        <div class="row r-skl cvonly">
+          <div class="panel">
+            <section class="cv-section">
+              <h2 class="section-title">Skills</h2>
+              <div class="section-content">{{skills}}</div>
+            </section>
+          </div>
+        </div>
+
+        <div class="row r-edu cvonly">
+          <div class="panel">
+            <section class="cv-section">
+              <h2 class="section-title">Education</h2>
+              <div class="section-content">{{education}}</div>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      // Collapsed rows stay in the DOM (0fr grid track), so keep them out of
+      // the tab order and accessibility tree with `inert`.
+      const setState = (cv) => {
+        document.body.classList.toggle("view-cv", cv);
+        for (const el of document.querySelectorAll(".landonly")) el.inert = cv;
+        for (const el of document.querySelectorAll(".cvonly")) el.inert = !cv;
+      };
+      setState(document.body.classList.contains("view-cv"));
+
+      const swap = (cv) => {
+        setState(cv);
+        scrollTo({
+          top: 0,
+          behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+            ? "auto"
+            : "smooth",
+        });
+      };
+      for (const link of document.querySelectorAll("[data-view]")) {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const cv = link.dataset.view === "cv";
+          history.pushState(null, "", cv ? "/resume" : "/");
+          swap(cv);
+        });
+      }
+      addEventListener("popstate", () =>
+        swap(location.pathname.startsWith("/resume")),
+      );
+    </script>
+  </body>
+</html>

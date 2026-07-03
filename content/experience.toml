@@ -1,0 +1,65 @@
+[[jobs]]
+title = "DevSecOps Engineer"
+company = "Ketryx Corporation"
+period = "Mar. 2026 - Present"
+description = "Maintained and evolved the AWS infrastructure of a regulated medtech SaaS scaleup across 30+ customer-facing environments. Drove major platform migrations, infrastructure cost reduction, and the company's security and compliance operations."
+achievements = [
+  "Cut monthly infrastructure spend by ~60%, from ~$260k to ~$106k, with no reduction in workloads or reliability: fleet-wide rightsizing of compute, storage, and autoscaling, scheduled weekend wind-downs, and an ~80% cut in CI spend ($60k+ down to ~$12k/month).",
+  "Rebuilt \\textit{GitHub Actions} \\textit{CI/CD} on self-hosted \\textit{RunsOn} runners (replacing \\textit{Depot}), orchestrating 30,000+ \\textit{EC2} instances daily: spot placement strategies, per-workload instance sizing, and aggressive caching (\\textit{ECR} pull-through, \\textit{Docker} layers, \\textit{GHA} cache).",
+  "Heavily optimized the \\textit{CI/CD} pipelines: implemented duration-weighted \\textit{E2E} test bin-packing, introduced artifact and dependency caching at both the workflow and step level, parallelized execution via background steps and gated waits, and restructured the pipelines into reusable workflows - making the release pipeline ~30% faster (~59 to ~42 minutes per run) on half the VMs and ~20% less compute.",
+  "Served as the technical driver for the \\textit{ISO 27001:2022} and \\textit{SOC 2} audits: prepared and defended control evidence with external auditors, maintained supporting \\textit{ISMS} documentation, and remediated nonconformities. Commissioned and coordinated an external penetration test, owned and remediated all findings via CAPAs.",
+  "Owned day-to-day compliance operations: automated compliance checks and control monitoring, evidence renewal, personnel compliance administration (policy acceptance, \\textit{HIPAA}/\\textit{GDPR} training), vendor security reviews, and enterprise customer security questionnaires.",
+  "Drove the platform's migration from \\textit{Elastic Beanstalk} to \\textit{ECS}: adapted the monolith to run as a containerized workload and configured \\textit{CI/CD} to build, test, and deploy both targets side by side during the transition, while standardizing environment state in a configurational repository.",
+]
+
+[[jobs]]
+title = "Staff Platform Engineer & Chief Information Security Officer"
+company = "MOSTLY AI Solutions MP GmbH"
+period = "Mar. 2024 - Mar. 2026"
+description = "Performed in a dual role managing both Platform Engineering and Information Security in a high-velocity startup. Responsible for the daily operation and evolution of the Kubernetes platform to support AI/ML workloads. Maintained the existing ISMS policies and procedures, enforcing controls and resolving non-conformities to ensure ongoing compliance."
+achievements = [
+  "Completely revamped the existing \\textit{Kubernetes} platform, introducing a multi-environment \\textit{GitOps}-driven solution (\\textit{ArgoCD}, later \\textit{FluxCD}) with enhanced \\textit{RBAC} (\\textit{EKS} \\textit{SSO}, \\textit{IRSA}) and networking (\\textit{AWS LBC}, \\textit{Readiness Gates}) for efficiency and security.",
+  "Successfully consulted through an \\textit{ISO 27001:2022} review and prepared for the \\textit{SOC2} Audit.",
+  "Implemented sophisticated \\textit{Kubernetes} auto-scaling infrastructure on \\textit{EKS} via \\textit{Karpenter}, \\textit{Pod Preemption} and \\textit{Hot Pools} to support AI Agents/ML Jobs, raising steady-state cluster memory utilization to ~75-85% with headroom reserved for overcommitment.",
+  "Ensured platform availability via a modern Operator-based monitoring stack: \\textit{Prometheus}/\\textit{Alertmanager} (via \\textit{Robusta}), \\textit{OpenTelemetry} (\\textit{Tempo}), and \\textit{Loki} (via \\textit{Alloy}), all managed via \\textit{IaC}.",
+  "Built a fully-automatic \\textit{GitOps}-based preview environments system, cutting environment provisioning from days (long-lived branch deploys) to minutes per pull request while significantly lowering infrastructure costs.",
+  "Reworked cloud infrastructure and networking by migrating to \\textit{IaC} via \\textit{Terragrunt} over \\textit{OpenTofu} (and \\textit{CrossPlane}), enhancing maintenance and observability.",
+  "Refactored \\textit{GitHub Actions} \\textit{CI/CD} with remote workflows and custom internal builders (via \\textit{ARC}), improving integration performance and security.",
+  "Introduced \\textit{Helm-charts} for internal/customer use with an in-house library and schema validation, redefining enterprise installation procedures.",
+]
+
+[[jobs]]
+title = "Head of Platform & Automation"
+company = "MightyCall (CallCurrent Inc.)"
+period = "Dec. 2021 - Mar. 2024"
+description = "Designed and built the company's new infrastructure platform, migrating from the Hashicorp stack to Kubernetes. Managed a team of 3 engineers, a hybrid fleet of over 200 servers and owned the cloud budget. Responsible for the reliability of the production environment and the efficiency of the developer experience."
+achievements = [
+  "Established multi-environment \\textit{CI/CD} (via \\textit{GitOps} on \\textit{ArgoCD}) and access control, enabling a seamless transition from the legacy Orchestration Stack.",
+  "Introduced \\textit{SaltStack} to replace \\textit{Ansible} for autonomous dependency and update management across \\textit{Linux} and \\textit{Windows} machines, ensuring consistency.",
+  "Led the implementation of a modern observability stack: metrics via \\textit{Prometheus}, tracing via \\textit{OpenTelemetry}, and centralized logging via \\textit{Loki}, unified in \\textit{Grafana}.",
+  "Adopted \\textit{Skaffold} for local development, featuring pre-configured components to allow for rapid iteration and clean testing, drastically speeding up the \\textit{SDLC}.",
+  "Redesigned configuration systems for legacy components, introducing \\textit{DRY} principles with parametrization to improve maintainability."
+]
+
+[[jobs]]
+title = "DevOps Engineer"
+company = "MightyCall (CallCurrent Inc.)"
+period = "Jul. 2020 - Dec. 2021"
+description = "Deployed, managed and supported the Hashicorp Orchestration Stack (Nomad, Consul, Vault) and enhanced IaC implementation via Terraform and Ansible, enabling developers/QA teams to deploy, configure and manage their own environments. Created and maintained QA/Dev environments via IaC - introducing new/maintaining existing Terraform modules, Ansible Roles/Playbooks, Python/Bash/PowerShell scripts and Jenkins Pipelines for automation."
+achievements = [
+  "Designed an in-house API Gateway and Load Balancing Solution based on \\textit{Envoy-proxy}, utilizing \\textit{Consul} KV and \\textit{Consul Template} for its dynamic configuration.",
+  "Performed a complete overhaul of the \\textit{CI/CD} \\textit{Jenkins} pipelines and transitioned to the \\textit{Declarative Pipeline} approach - introduced \\textit{Groovy} Libraries (Classes, Functions) for standardization and easier maintenance/quality control. This also sped up deployment/build times dramatically (1 hour to 8 minutes on average per component), whilst at the same time heavily improving compute usage.",
+  "Introduced monitoring setup as part of the deployment process, configuring \\textit{Zabbix} integration (via \\textit{Zabbix Agent}) for base health metrics and simple alerts and \\textit{New Relic} for \\textit{APM} (Application Performance Monitoring)."
+]
+
+[[jobs]]
+title = "Head of Customer Support"
+company = "MightyCall (CallCurrent Inc.)"
+period = "Nov. 2019 - Dec. 2021"
+description = "Held alongside the DevOps Engineering role. Managed a team of 8 remote support agents and led the Anti-Fraud department. Improved internal and cross-departmental communication, positioning Support as a customer-centric insights provider for PM and Marketing while facilitating QA/Development's engagement with Tier 2 on existing bugs."
+achievements = [
+  "Introduced new onboarding and qualification improvement processes - erasing the gap between Tier 1 and Tier 2 teams, improving turnaround times and response quality.",
+  "Completely reworked the working schedule, reducing the missed support call ratio from 86% to 4% while maintaining the same working hours.",
+  "Maintained and improved support tooling (\\textit{Zendesk}, \\textit{LiveChat}, \\textit{Intercom}, etc.), introducing new automations, triggers, new ways to interact with customers and better ways to handle customer feedback, as well as perform analytics.",
+  "Conducted daily routine checks and educated an AI-driven self-learning anti-fraud platform. Collaborated with providing carriers and FBI to maintain a fraud-free service."
+]

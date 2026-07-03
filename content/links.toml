@@ -1,0 +1,7 @@
+# Private contacts (phone, telegram) live in .env (gitignored) so they only
+# appear in locally-built CVs, never on the public site. See build.mjs.
+email = "d.parshenkov@truehhart.com"
+website = "https://truehhart.com"
+location = "Batumi, GE"
+github = "https://github.com/truehhart"
+linkedin = "https://linkedin.com/in/dmitrii-parshenkov"

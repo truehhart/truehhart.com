@@ -1,0 +1,351 @@
+/* ATS CV, restyled with the main page's palette. Layout stays strictly
+   linear (single column, Title/Company/Date order) so text extraction is
+   unchanged — the uplift is color, type and the portrait only. */
+
+:root {
+  --paper: #fbf8f1;
+  --ink: #22302c;
+  --soft: #e7e2d6;
+  --green: #b8dc92;
+  --blue: #b8d5df;
+  --muted: #6d756c;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  /* Disable fi/fl-style ligatures so ATS text extraction stays plain ASCII. */
+  font-variant-ligatures: none;
+}
+
+.cv-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.cv-name {
+  margin-bottom: 0.35rem;
+  font-size: 2.6rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.cv-title {
+  color: var(--muted);
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.cv-portrait {
+  flex: none;
+  width: 114px;
+  height: 133px;
+  object-fit: cover;
+  object-position: center 12%;
+  object-view-box: inset(5% 12% -17.5% 15%);
+  border: 1px solid var(--ink);
+  background: var(--blue);
+  box-shadow: 4px 4px 0 var(--soft);
+}
+
+.section-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 0.4rem;
+}
+
+.job-entry {
+  margin-bottom: 1.25rem;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.job-title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.job-period,
+.education-year {
+  font-size: 0.9rem;
+  color: var(--muted);
+  white-space: nowrap;
+  margin-left: 1rem;
+}
+
+.job-company,
+.education-institution {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.job-description {
+  font-size: 1rem;
+  color: var(--ink);
+  border-left: 2px solid var(--green);
+  padding-left: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.job-achievements {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.job-achievements li {
+  font-size: 1rem;
+  color: var(--ink);
+  padding-left: 1.25rem;
+  margin-bottom: 0.25rem;
+}
+
+/* Bullet glued to its text with literal nbsp chars (no positioned gap) so
+   print-to-PDF keeps the bullet inline with its line; a gap between marker
+   and text makes PDF text-extractors emit a stray bullet on its own line. */
+.job-achievements li::before {
+  content: "•  ";
+  color: var(--muted);
+}
+
+.skill-category-name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.education-entry {
+  margin-bottom: 1rem;
+}
+
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.education-degree {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.education-details {
+  font-size: 1rem;
+  color: var(--ink);
+  margin-top: 0.5rem;
+}
+
+.header-link {
+  font-size: 0.875rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.header-link:hover {
+  color: var(--muted);
+}
+
+.about-content {
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.contact-line {
+  font-size: 0.95rem;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.contact-line a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.contact-line a:hover {
+  color: var(--muted);
+}
+
+.contact-sep {
+  color: var(--muted);
+}
+
+.skill-line {
+  font-size: 1rem;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+@media print {
+  /* Full-bleed paper color: Chrome never paints @page margins, so the page
+     margin is zero and body padding takes its place. box-decoration-break:
+     clone repeats that padding on every page fragment, not just the first
+     and last. */
+  @page {
+    margin: 0;
+    size: A4;
+  }
+
+  html {
+    background: var(--paper);
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  body {
+    padding: 0.4in;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    font-size: 8pt !important;
+    line-height: 1.25 !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .page-container {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+
+  header {
+    padding: 0 !important;
+    margin-bottom: 0.3rem !important;
+  }
+
+  .cv-portrait {
+    width: 82px;
+    height: 96px;
+    box-shadow: 2px 2px 0 var(--soft);
+  }
+
+  h1 {
+    font-size: 14pt !important;
+    margin-bottom: 0.1rem !important;
+  }
+
+  .cv-title {
+    font-size: 8pt !important;
+  }
+
+  .about-content {
+    font-size: 8pt !important;
+    margin-top: 0.2rem !important;
+  }
+
+  .section-title,
+  h2 {
+    font-size: 8pt !important;
+    margin-bottom: 0.25rem !important;
+    padding-bottom: 0.15rem !important;
+  }
+
+  .job-entry {
+    margin-bottom: 0.4rem !important;
+  }
+
+  .job-header {
+    margin-bottom: 0.15rem !important;
+  }
+
+  .job-title {
+    font-size: 8pt !important;
+  }
+
+  .job-period,
+  .job-company,
+  .job-description,
+  .job-achievements li,
+  .education-degree,
+  .education-year,
+  .education-institution,
+  .education-details,
+  .skill-category-name,
+  .skill-line,
+  .contact-line,
+  .contact-line a {
+    font-size: 8pt !important;
+  }
+
+  .job-company {
+    margin-bottom: 0.15rem !important;
+  }
+
+  .header-link {
+    font-size: 7pt !important;
+  }
+
+  .job-description {
+    margin-bottom: 0.25rem !important;
+    padding-left: 0.4rem !important;
+    border-left-width: 1px;
+  }
+
+  .job-achievements li {
+    margin-bottom: 0.05rem !important;
+    padding-left: 0.6rem !important;
+  }
+
+  .skill-line {
+    margin-bottom: 0.15rem !important;
+  }
+
+  .education-entry {
+    margin-bottom: 0.3rem !important;
+  }
+
+  .education-header {
+    margin-bottom: 0.1rem !important;
+  }
+
+  section {
+    margin-bottom: 0.5rem !important;
+  }
+
+  .space-y-8 > * + * {
+    margin-top: 0.4rem !important;
+  }
+
+  /* Job entries may split across pages, but the title/company/description
+     block stays together and glued to the first bullets so ATS parsers never
+     read an orphaned, empty position. Bullets themselves never split. */
+  .education-entry,
+  .skill-line,
+  .job-header,
+  .job-company,
+  .job-description,
+  .job-achievements li {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .job-header,
+  .job-company,
+  .job-description {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .job-achievements li:last-child {
+    break-before: avoid;
+    page-break-before: avoid;
+  }
+}

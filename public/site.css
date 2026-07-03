@@ -1,0 +1,549 @@
+/* Combined landing + styled CV page. One card in the DOM: the landing card
+   transforms into the CV in place (document bar unfolds above the shared
+   intro, the nav rows swap for CV sections below, the card widens). Rows are
+   CSS-transition driven, so the animation reverses cleanly mid-flight. */
+
+:root {
+  --paper: #fbf8f1;
+  --ink: #22302c;
+  --soft: #e7e2d6;
+  --green: #b8dc92;
+  --orange: #f4bd76;
+  --blue: #b8d5df;
+  --muted: #6d756c;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  min-width: 320px;
+  margin: 0;
+  color: var(--ink);
+  background: #dfe5dd;
+  background-image:
+    linear-gradient(90deg, rgba(34, 48, 44, 0.035) 1px, transparent 1px),
+    linear-gradient(rgba(34, 48, 44, 0.035) 1px, transparent 1px);
+  background-size: 24px 24px;
+  font:
+    13px/1.4 "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+  font-variant-ligatures: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---- card + view-swap machinery ---- */
+/* The intro must not move while the document bar (42px) unfolds above it:
+   the bar's height and the card's top margin animate 42px in opposite
+   directions with identical duration/easing/delay. Both are plain px
+   transitions, so every engine interpolates them in perfect sync and the
+   card's top edge grows upward from its current position. */
+.wrap {
+  padding: calc(clamp(66px, 14vh, 220px) - 42px) 16px 48px;
+}
+.mcard {
+  width: min(100% - 32px, 650px);
+  margin: 42px auto 0;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  box-shadow: 8px 8px 0 rgba(34, 48, 44, 0.16);
+  overflow: hidden;
+  transition:
+    width 0.45s cubic-bezier(0.3, 0.9, 0.4, 1) 0.15s,
+    margin-top 0.3s cubic-bezier(0.3, 0.9, 0.4, 1) 0.32s;
+}
+body.view-cv .mcard {
+  width: min(100% - 32px, 760px);
+  margin-top: 0;
+  transition-delay: 0s, 0.12s;
+}
+/* Fixed-height bar animates in px (not the 0fr trick) so it exactly mirrors
+   the margin-top compensation. Its content is glued to the bottom of the
+   growing box, so the border-bottom above the intro is visible from the
+   first frame while the top edge gets clipped. */
+.r-bar {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s cubic-bezier(0.3, 0.9, 0.4, 1) 0.32s;
+}
+.r-bar .panel {
+  position: absolute;
+  inset: auto 0 0 0;
+}
+body.view-cv .r-bar {
+  height: 42px;
+  transition-delay: 0.12s;
+}
+
+.row {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.3, 0.9, 0.4, 1);
+}
+.panel {
+  min-height: 0;
+  overflow: hidden;
+}
+body:not(.view-cv) :is(.r-intro, .landonly),
+body.view-cv :is(.r-intro, .cvonly) {
+  grid-template-rows: 1fr;
+}
+/* stagger: to CV — nav collapses, bar unfolds above, sections build downward */
+body.view-cv .r-sum {
+  transition-delay: 0.2s;
+}
+body.view-cv .r-exp {
+  transition-delay: 0.3s;
+}
+body.view-cv .r-skl {
+  transition-delay: 0.4s;
+}
+body.view-cv .r-edu {
+  transition-delay: 0.5s;
+}
+/* back to landing — sections close bottom-up, then the nav reopens */
+.r-skl {
+  transition-delay: 0.08s;
+}
+.r-exp {
+  transition-delay: 0.16s;
+}
+.r-sum {
+  transition-delay: 0.24s;
+}
+.r-lower {
+  transition-delay: 0.4s;
+}
+body.view-cv .r-lower {
+  transition-delay: 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mcard,
+  .row,
+  .r-bar {
+    transition: none;
+  }
+}
+
+/* ---- document bar (CV state) ---- */
+.document-bar {
+  min-height: 42px;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--ink);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.document-bar a {
+  color: inherit;
+  text-decoration: none;
+}
+.document-bar a:hover {
+  color: var(--muted);
+}
+.document-bar a:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+/* ---- intro (shared by both states) ---- */
+.intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 195px;
+  border-bottom: 1px solid var(--ink);
+}
+.about {
+  padding: 31px 28px 28px;
+}
+h1 {
+  max-width: 430px;
+  margin: 0;
+  font-size: clamp(32px, 6vw, 47px);
+  font-weight: 600;
+  line-height: 0.93;
+  letter-spacing: -0.09em;
+}
+.tagline {
+  margin: 12px 0 27px;
+  color: var(--muted);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.index {
+  position: relative;
+  min-height: 208px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  overflow: hidden;
+  border-left: 1px solid var(--ink);
+  background: var(--blue);
+}
+.portrait {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 12%;
+  image-rendering: pixelated;
+}
+/* ---- landing lower half ---- */
+.lower {
+  display: grid;
+  grid-template-columns: 1.2fr 1.8fr;
+}
+.details {
+  padding: 20px 18px 18px;
+  border-right: 1px solid var(--ink);
+}
+.eyebrow {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.tags span {
+  padding: 4px 6px;
+  border: 1px solid var(--ink);
+  font-size: 10px;
+}
+.tags span:nth-child(2n) {
+  background: var(--green);
+}
+/* Right nav column is exactly as wide as the portrait pane (195px) and the
+   divider is a border-LEFT, so it overlays the pane's border-left above it
+   pixel for pixel. */
+.lower nav {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 195px;
+  grid-auto-rows: minmax(72px, 1fr);
+}
+.lower a {
+  position: relative;
+  min-height: 72px;
+  padding: 12px 42px 12px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+  transition: background 0.15s ease;
+}
+.lower a:nth-child(2n) {
+  border-left: 1px solid var(--ink);
+}
+.lower a:nth-last-child(-n + 2) {
+  border-bottom: 0;
+}
+.lower a:hover {
+  background: var(--orange);
+}
+.lower a small {
+  color: var(--muted);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.lower a strong {
+  font-size: 12px;
+  font-weight: 500;
+}
+.go {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+}
+footer {
+  padding: 11px 15px;
+  border-top: 1px solid var(--ink);
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+/* ---- CV sections ---- */
+.cv-section {
+  display: grid;
+  grid-template-columns: 145px 1fr;
+  border-top: 1px solid var(--ink);
+}
+.r-sum .cv-section {
+  border-top: 0;
+}
+.section-title {
+  margin: 0;
+  padding: 19px 16px;
+  border-right: 1px solid var(--ink);
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.07em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+.section-content {
+  min-width: 0;
+  padding: 18px 20px 20px;
+}
+.about-content {
+  max-width: 480px;
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.job-entry {
+  margin-bottom: 19px;
+}
+.job-entry:last-child,
+.education-entry:last-child {
+  margin-bottom: 0;
+}
+.job-header,
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
+  margin-bottom: 3px;
+}
+.job-title,
+.education-degree {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.job-period,
+.education-year {
+  flex: none;
+  color: var(--muted);
+  font-size: 10px;
+  white-space: nowrap;
+}
+.job-company,
+.education-institution {
+  margin: 0 0 7px;
+  color: var(--muted);
+  font-size: 10px;
+}
+.job-description {
+  margin: 0 0 8px;
+  padding-left: 10px;
+  border-left: 2px solid var(--green);
+  font-size: 12px;
+  line-height: 1.45;
+}
+.job-achievements {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.job-achievements li {
+  margin-bottom: 4px;
+  padding-left: 13px;
+  font-size: 11px;
+  line-height: 1.38;
+}
+.job-achievements li::before {
+  content: "• ";
+  margin-left: -13px;
+  color: var(--muted);
+}
+.skill-line {
+  margin: 0 0 7px;
+  font-size: 11px;
+  line-height: 1.42;
+}
+.skill-category-name {
+  font-weight: 600;
+}
+.education-entry {
+  margin-bottom: 13px;
+}
+.education-details {
+  margin: 6px 0 0;
+}
+
+@media (max-width: 560px) {
+  .wrap {
+    padding: 12px 11px 32px;
+  }
+  .mcard,
+  body.view-cv .mcard {
+    width: 100%;
+  }
+  .intro {
+    grid-template-columns: minmax(0, 1fr) clamp(100px, 30vw, 150px);
+  }
+  .about {
+    padding: 27px 20px 25px;
+  }
+  h1 {
+    font-size: clamp(28px, 9vw, 36px);
+  }
+  .index {
+    min-height: auto;
+    border: 0;
+    border-left: 1px solid var(--ink);
+  }
+  .lower {
+    grid-template-columns: 1fr;
+  }
+  .details {
+    border-right: 0;
+    border-bottom: 1px solid var(--ink);
+  }
+  .lower nav {
+    grid-template-columns: 1fr;
+  }
+  /* re-list the desktop border selectors so every cell gets its bottom
+     border back in the single-column layout, then drop only the last one */
+  .lower a,
+  .lower a:nth-child(2n),
+  .lower a:nth-last-child(-n + 2) {
+    min-height: 52px;
+    border-left: 0;
+    border-bottom: 1px solid var(--ink);
+  }
+  .lower a:last-child {
+    border-bottom: 0;
+  }
+  .cv-section {
+    grid-template-columns: 1fr;
+  }
+  .section-title {
+    padding: 11px 20px 8px;
+    border: 0;
+  }
+  .section-content {
+    padding: 4px 20px 19px;
+  }
+  .job-header,
+  .education-header {
+    display: block;
+  }
+  .job-period,
+  .education-year {
+    display: block;
+    margin-top: 4px;
+  }
+}
+
+@media print {
+  @page {
+    margin: 0.38in;
+    size: A4;
+  }
+  body {
+    background: var(--paper);
+    font-size: 8pt;
+    line-height: 1.25;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .wrap {
+    padding: 0;
+  }
+  .mcard {
+    width: 100%;
+    border: 0;
+    box-shadow: none;
+  }
+  .document-bar {
+    min-height: 22px;
+    padding: 0;
+    font-size: 7pt;
+  }
+  .about {
+    padding: 12px 0 9px;
+  }
+  .index {
+    min-height: 0;
+    padding: 9px;
+  }
+  h1 {
+    font-size: 18pt;
+  }
+  .tagline {
+    margin: 4px 0 7px;
+    font-size: 7pt;
+  }
+  .job-period,
+  .education-year,
+  .job-company,
+  .education-institution {
+    font-size: 7pt;
+  }
+  .cv-section {
+    grid-template-columns: 86px 1fr;
+  }
+  .section-title {
+    padding: 7px 8px 7px 0;
+    font-size: 7pt;
+  }
+  .section-content {
+    padding: 7px 0 8px 10px;
+  }
+  .about-content {
+    font-size: 8pt;
+    line-height: 1.25;
+  }
+  .job-entry {
+    margin-bottom: 6px;
+  }
+  .job-header,
+  .education-header {
+    gap: 8px;
+    margin-bottom: 1px;
+  }
+  .job-title,
+  .education-degree,
+  .job-description,
+  .job-achievements li,
+  .skill-line,
+  .education-details {
+    font-size: 8pt;
+  }
+  .job-company {
+    margin-bottom: 2px;
+  }
+  .job-description {
+    margin-bottom: 3px;
+    padding-left: 6px;
+    border-left-width: 1px;
+  }
+  .job-achievements li {
+    margin-bottom: 1px;
+    padding-left: 9px;
+  }
+  .job-achievements li::before {
+    margin-left: -9px;
+  }
+  .skill-line {
+    margin-bottom: 2px;
+  }
+  .education-entry {
+    margin-bottom: 4px;
+  }
+  .education-entry,
+  .skill-line {
+    break-inside: avoid;
+  }
+}

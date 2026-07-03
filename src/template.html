@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dmitrii Parshenkov</title>
+    <link rel="icon" type="image/png" href="/images/favicon.png?v=3" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /*STYLES*/
+    </style>
+  </head>
+  <body class="text-base">
+    <div class="w-full page-container">
+      <div class="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-10">
+        <header class="cv-header mb-6">
+          <div>
+            <div>{{header}}</div>
+            <div class="contact-line mt-3">{{links}}</div>
+          </div>
+          <!-- Relative src so the PDF export (file://dist/cv/index.html) resolves it too. -->
+          <img
+            class="cv-portrait"
+            src="../images/portrait-cv.webp"
+            alt="Portrait"
+          />
+        </header>
+
+        <main class="space-y-8">
+          <section>
+            <h2 class="section-title">Summary</h2>
+            <div>{{about}}</div>
+          </section>
+
+          <section>
+            <h2 class="section-title">Experience</h2>
+            <div>{{experience}}</div>
+          </section>
+
+          <section>
+            <h2 class="section-title">Skills</h2>
+            <div>{{skills}}</div>
+          </section>
+
+          <section>
+            <h2 class="section-title">Education</h2>
+            <div>{{education}}</div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>

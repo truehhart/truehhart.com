@@ -1,0 +1,43 @@
+[[categories]]
+name = "CI/CD & Configuration Management"
+skills = ["Jenkins", "GitHub Actions", "Azure DevOps", "ArgoCD", "FluxCD", "GitOps", "Ansible", "SaltStack", "Helm", "Kustomize", "Skaffold", "Jenkins Shared Libraries", "GitHub Actions Runner Controller (ARC)"]
+
+[[categories]]
+name = "Containerization & Orchestration"
+skills = ["Kubernetes", "Docker", "Amazon EKS", "Amazon ECS", "Karpenter", "Nomad", "Consul", "Service Mesh", "Envoy", "Amazon ECR", "Harbor"]
+
+[[categories]]
+name = "Cloud & Infrastructure as Code (IaC)"
+skills = ["AWS", "Azure", "GCP", "Terraform", "Terragrunt", "OpenTofu", "Crossplane", "CloudFormation", "AWS Elastic Beanstalk", "Zero-Downtime & Blue/Green Deployments", "EC2 Spot Instances", "Cost Optimization (FinOps)", "Cloud Budget Ownership"]
+
+[[categories]]
+name = "Networking"
+skills = ["Load Balancing", "Ingress Controllers", "AWS Load Balancer Controller", "API Gateway", "DNS"]
+
+[[categories]]
+name = "Security & Compliance"
+skills = ["ISO 27001:2022", "SOC 2", "HIPAA", "GDPR", "ISMS", "SOP Documentation", "Penetration Testing", "Vulnerability Management", "Corrective & Preventive Actions (CAPA)", "RBAC", "IAM (SSO, IRSA)", "Secrets Management (Vault)", "Vendor Risk Management", "Security Questionnaires", "KYC / Anti-Fraud", "Security Awareness Training", "Audit Evidence Management"]
+
+[[categories]]
+name = "Programming & Automation"
+skills = ["Golang", "Python", "Bash", "Nushell", "Groovy", "JavaScript", "PowerShell", "Prometheus Exporters", "Kubernetes Controllers/Operators"]
+
+[[categories]]
+name = "Databases & Caching"
+skills = ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Valkey", "InfluxDB", "Amazon ElastiCache"]
+
+[[categories]]
+name = "Observability & Site Reliability Engineering (SRE)"
+skills = ["Prometheus", "Alertmanager", "Grafana", "Loki", "Tempo", "OpenTelemetry", "Alloy", "Robusta", "Zabbix", "ELK", "New Relic", "Datadog"]
+
+[[categories]]
+name = "Agentic AI Engineering"
+skills = ["Skills", "Orchestration", "CI/CD (review, triage, codegen)", "MCP"]
+
+[[categories]]
+name = "Leadership"
+skills = ["Team Leadership", "Cross-Functional Collaboration"]
+
+[[categories]]
+name = "Languages"
+skills = ["English (Fluent - C2)", "German (Intermediate - B1)", "French (Intermediate - B1)", "Russian (Native)"]
